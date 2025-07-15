@@ -28,7 +28,7 @@ SECRET_KEY = os.environ.get("SECRET_KEY", "unsafe-dev-key")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.environ.get("DEBUG", "False") == "True"
 
-ALLOWED_HOSTS = ["render.com", "your-service-name.onrender.com"]
+ALLOWED_HOSTS = ["render.com", "hr-dashboard-jek9.onrender.com"]
 
 
 # Application definition
