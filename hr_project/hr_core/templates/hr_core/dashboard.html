@@ -1,0 +1,14 @@
+{% extends "hr_core/base.html" %}
+
+{% block title %}Dashboard{% endblock %}
+
+{% block content %}
+
+<div class="container d-flex justify-content-center align-items-center" style="min-height: 80vh;">
+    <div class="text-center bg-light p-5 rounded shadow-sm">
+      <h2 class="mb-3 text-success">Login Successful</h2>
+      <p class="fs-5">Welcome, <strong>{{ admin_name }}</strong>!</p>
+    </div>
+  </div>
+  
+{% endblock %}

@@ -1,0 +1,52 @@
+{% extends "hr_core/base.html" %}
+
+{% block title %}Employee List{% endblock %} 
+
+{% block content %}
+
+<div class="container-fluid mt-4">  
+    <div class="table-responsive-sm">
+      <table class="table table-bordered table-hover table-striped align-middle">
+        <thead class="table-dark">
+          <tr>
+            <th>Name</th>
+            <th>Username</th>
+            <th>Department</th>
+            <th>Role</th>
+            <th>Salary</th>
+            <th>Email</th>
+            <th>Phone Number</th>
+            <th>Address</th>
+            <th>Hire Date</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for employee in employees %}
+          <tr>
+            <td>
+              <a href="{% url 'edit_employee' employee.pk %}" class="text-decoration-none">
+                {{ employee.name }}
+              </a>
+            </td>
+            <td>{{ employee.user.username }}</td>
+            <td>{{ employee.department }}</td>
+            <td>{{ employee.role }}</td>
+            <td>{{ employee.salary }}</td>
+            <td>{{ employee.email }}</td>
+            <td>{{ employee.phone_number }}</td>
+            <td>{{ employee.address }}</td>
+            <td>{{ employee.hire_date|date:'d-m-Y' }}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+  
+  
+  
+  
+{% endblock %}
+
+
+ 
