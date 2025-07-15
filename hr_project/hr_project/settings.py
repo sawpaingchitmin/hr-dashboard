@@ -11,7 +11,6 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 """
 
 from pathlib import Path
-import dj_database_url
 import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -28,7 +27,7 @@ SECRET_KEY = os.environ.get("SECRET_KEY", "unsafe-dev-key")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.environ.get("DEBUG", "False") == "True"
 
-ALLOWED_HOSTS = ["render.com", "hr-dashboard-jek9.onrender.com"]
+ALLOWED_HOSTS = ["render.com", "hr-dashboard-jek9.onrender.com", "localhost", "127.0.0.1"]
 
 
 # Application definition
@@ -77,17 +76,12 @@ WSGI_APPLICATION = 'hr_project.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
-if os.environ.get("USE_SQLITE", "False") == "True":
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.sqlite3',
-            'NAME': BASE_DIR / 'db.sqlite3',
-        }
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
-else:
-    DATABASES = {
-        'default': dj_database_url.config(conn_max_age=600, default="postgres://localhost")
-    }
+}
 
 LOGIN_URL = '/login/'
 LOGIN_REDIRECT_URL = 'home_redirect'
