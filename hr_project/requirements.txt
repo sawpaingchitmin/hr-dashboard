@@ -60,4 +60,3 @@ webencodings==0.5.1
 Werkzeug==3.1.3
 whitenoise==6.9.0
 yt-dlp==2024.12.23
-zimscraperlib==4.0.0
