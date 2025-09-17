@@ -116,7 +116,8 @@ def employee_dashboard(request):
     try:
         employee = request.user.employee
     except Employee.DoesNotExist:
-        return HttpResponse("⚠️ No employee profile linked to this user.", status=403)
+        messages.error(request, "⚠️ Your employee account is no longer active or has been deleted. Please contact admin.")
+        return redirect("login")
     
     today = date.today()
     attendance, _ = Attendance.objects.get_or_create(employee=employee, date=today)
