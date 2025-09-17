@@ -1,0 +1,31 @@
+{% extends "hr_core/base.html" %}
+{% block title %}Attendance History{% endblock %}
+
+{% block content %}
+
+<div class="container-fluid mt-4">
+    <div class="table-responsive-sm">
+      <table class="table table-bordered table-hover table-striped align-middle">
+        <thead class="table-dark">
+          <tr>
+            <th>Name</th>
+            <th>Date</th>
+            <th>Check-In</th>
+            <th>Check-Out</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for record in records %}
+          <tr>
+            <td>{{ record.employee.name }}</td>
+            <td>{{ record.date|date:'d-m-Y' }}</td>
+            <td>{{ record.check_in|default:"-" }}</td>
+            <td>{{ record.check_out|default:"-" }}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+  
+{% endblock %}
