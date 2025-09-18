@@ -6,7 +6,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 from datetime import date
 from django.utils import timezone
-from django.http import HttpResponse
+from django.db import IntegrityError
 
 @login_required
 def home_redirect(request):
@@ -41,6 +41,10 @@ def add_employee(request):
         username = request.POST.get("username")
         password = request.POST.get("password")
 
+        if User.objects.filter(username=username).exists():
+            messages.error(request, f"Username '{username}' is already taken. Please choose another username.")
+            return render(request, "hr_core/add_employee.html", {"form_data": request.POST})
+
         user = User.objects.create_user(username=username, password=password)
        
         Employee.objects.create(
@@ -55,6 +59,7 @@ def add_employee(request):
             hire_date=request.POST.get("hire_date"),
         )
         return redirect("employee_list")
+       
     return render(request, 'hr_core/add_employee.html')
 
 @login_required

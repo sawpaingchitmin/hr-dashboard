@@ -5,57 +5,63 @@
 {% block content %}
 
 <div class="container mt-5">
+    {% if messages %}
+      {% for message in messages %}
+        <div class="alert alert-danger">{{ message }}</div>
+      {% endfor %}
+    {% endif %}
+
     <form method="POST">
       {% csrf_token %}
   
       <div class="mb-3">
         <label for="username" class="form-label">Username</label>
-        <input type="text" name="username" class="form-control" required>
+        <input type="text" name="username" class="form-control" value="{{ form_data.username }}" required>
       </div>
   
       <div class="mb-3">
         <label for="password" class="form-label">Password</label>
-        <input type="password" name="password" class="form-control" required>
+        <input type="password" name="password" class="form-control" value="{{ form_data.password }}" required>
       </div>
   
       <div class="mb-3">
         <label for="name" class="form-label">Full Name</label>
-        <input type="text" name="name" class="form-control" required>
+        <input type="text" name="name" class="form-control" value="{{ form_data.name }}" required>
       </div>
   
       <div class="mb-3">
         <label for="department" class="form-label">Department</label>
-        <input type="text" name="department" class="form-control" required>
+        <input type="text" name="department" class="form-control" value="{{ form_data.department }}" required>
       </div>
   
       <div class="mb-3">
         <label for="role" class="form-label">Role</label>
-        <input type="text" name="role" class="form-control" required>
+        <input type="text" name="role" class="form-control" value="{{ form_data.role }}" required>
       </div>
   
       <div class="mb-3">
         <label for="salary" class="form-label">Salary</label>
-        <input type="number" name="salary" class="form-control" required>
+        <input type="number" name="salary" class="form-control" value="{{ form_data.salary }}" required>
       </div>
   
       <div class="mb-3">
         <label for="email" class="form-label">Email</label>
-        <input type="email" name="email" class="form-control">
+        <input type="email" name="email" class="form-control" value="{{ form_data.email }}">
       </div>
   
       <div class="mb-3">
         <label for="phone_number" class="form-label">Phone Number</label>
-        <input type="text" name="phone_number" class="form-control">
+        <input type="text" name="phone_number" class="form-control" value="{{ form_data.phone_number }}">
       </div>
   
       <div class="mb-3">
         <label for="address" class="form-label">Address</label>
-        <textarea name="address" class="form-control" rows="3"></textarea>
+        <textarea name="address" class="form-control" rows="3">{{ form_data.address }}</textarea>
       </div>
   
       <div class="mb-4">
         <label for="hire_date" class="form-label">Hire Date</label>
-        <input type="date" name="hire_date" class="form-control" required>
+        <input type="date" name="hire_date" class="form-control" value="{{ form_data.hire_date }}" required>
       </div>
   
       <button type="submit" class="btn btn-primary mb-5">Add Employee</button>
