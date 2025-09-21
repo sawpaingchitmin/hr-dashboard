@@ -82,7 +82,7 @@ python manage.py createsuperuser
 python manage.py runserver
 ```
 
-## 📂 Project 
+## 📂 Project Structure 
 ```bash
 hr_dashboard/
 │── hr_core/
@@ -104,7 +104,6 @@ hr_dashboard/
 │   ├── urls.py          # Main project routes
 │   └── wsgi.py
 │
-│── .env 
 │── db.sqlite3
 │── manage.py
 │── requirements.txt
